@@ -1,4 +1,5 @@
 const InputView = require('./views/InputView.js');
+const OutputView = require('./views/OutputView.js');
 const Bridge = require('./Bridge.js');
 const BridgeMaker = require('./BridgeMaker.js');
 const Validation = require('./Validation.js');
@@ -13,7 +14,12 @@ class GameController {
   }
 
   #makeBridge(size) {
-    Validation.validateBridgeSize(size);
+    try {
+      Validation.validateBridgeSize(size);
+    } catch ({ message }) {
+      OutputView.print(message);
+      this.#requestBridgeSize();
+    }
   }
 }
 
