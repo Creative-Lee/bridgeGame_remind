@@ -1,3 +1,5 @@
-class Bridge {}
+class Bridge {
+  #bridge;
+}
 
 module.exports = Bridge;
